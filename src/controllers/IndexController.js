@@ -3,6 +3,16 @@ const pool = require('../database');
 const passport = require('passport');
 const stripe= require('stripe')('sk_test_wJcIWcHUlMePLzlqrWANGSGP00efXgYpdY');
 
+controller.mision=(req,res)=>{
+  res.render("mision");
+};
+controller.vision=(req,res)=>{
+  res.render("vision");
+};
+controller.valores=(req,res)=>{
+  res.render("valores");
+};
+
 controller.pago= async (req,res)=>{
   const {pago,nombre,descripcion}=req.body;
   const id= req.user.id;

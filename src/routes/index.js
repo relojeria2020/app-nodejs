@@ -3,6 +3,9 @@ const indexController = require('../controllers/IndexController');
 const router= express.Router();
 
 router.get('/',indexController.index);
+router.get('/mision',indexController.mision);
+router.get('/vision',indexController.vision);
+router.get('/nuestros-valores',indexController.valores);
 router.get('/inicio/sesion',indexController.inicio);
 router.get('/contacto',indexController.contacto);
 router.get('/registrarse',indexController.registrarse);
