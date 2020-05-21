@@ -194,7 +194,7 @@ controller.cliente_carrito= async(req,res)=>{
 };
 controller.registro = (req, res, next) => {  
     passport.authenticate('local.registro', {
-      successRedirect: '/administrador/inicio',      
+      successRedirect: '/cliente/inicio',      
       failureRedirect:'/inicio/sesion',  
       failureFlash: true
     })(req, res, next);
