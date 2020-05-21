@@ -70,13 +70,6 @@ app.use(multer({
   dest: path.join(__dirname, 'public/imagenes')
 }).single('imagen'));
 
-app.use(myConnection(mysql, {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  port: 3306,
-  database: 'pelis_app'
-}, 'single'));
 
 // Global variables
 app.use((req, res, next) => {
