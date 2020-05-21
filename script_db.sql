@@ -3,8 +3,8 @@ use relojeria;
 CREATE TABLE usuarios(
     id int(3) AUTO_INCREMENT NOT NULL,
     correo varchar(35) NOT NULL,
-    passwd varchar(15) NOT NULL,
-    rol varchar(5),
+    passwd varchar(250) NOT NULL,
+    rol varchar(25),
     PRIMARY KEY(id)
 );
 CREATE TABLE suscritos(
