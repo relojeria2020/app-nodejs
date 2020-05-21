@@ -6,11 +6,12 @@ module.exports = {
          password: 'f88EHLfMZXQ50nfORSH5',
          database: 'bqwwccgaqnx2tespzgmk'
     }
-    // database: {
-    //     host: 'localhost',
-    //     user: 'root',
-    //     password: 'root',
-    //     database: 'relojeria'
-    // }
+    /*
+     database: {
+         host: 'localhost',
+         user: 'root',
+         password: '',
+         database: 'relojeria'
+    }*/
 
 };

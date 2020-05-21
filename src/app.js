@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');//crear el path para poder utilizar el app.set('views', path.join(__dirname, 'views'));
 const morgan = require('morgan');
-const mysql = require('mysql');
 const session= require('express-session');
-const myConnection = require('express-myconnection');
 const multer = require('multer');      
 const passport = require('passport');
 const validator = require('express-validator');
