@@ -57,9 +57,7 @@ passport.use('local.registro', new LocalStrategy({
    
   }else {
     const rol = "cliente";
-    const id="NULL";
-    const newUser = {
-      id,
+    let newUser = {
       correo,
       passwd,
       rol

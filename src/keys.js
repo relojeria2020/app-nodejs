@@ -5,7 +5,9 @@ module.exports = {
          user: 'uybdomxadqhb9zcb',
          password: 'f88EHLfMZXQ50nfORSH5',
          database: 'bqwwccgaqnx2tespzgmk'
-    }/*
+    }
+    
+    /*
    
      database: {
          host: 'localhost',
