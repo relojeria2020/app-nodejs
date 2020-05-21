@@ -1,0 +1,103 @@
+{{>header}}
+
+<section class="login_part padding_top py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_text text-center">
+                    <div class="login_part_text_iner">
+                        <h2>¿Ya tienes una cuenta?</h2>
+                        <p>Inicia sesión ahora</p>
+                        <form class="row contact_form" action="src/peticiones/user/iniciar_sesion.php" method="post">
+                            <div class="col-md-12 offset-md-2 form-group p_star">
+                                <input type="email" class="form-control" id="correo" name="correo"
+                                    placeholder="example@gmail.com">
+                            </div>
+                            <div class="col-md-12 offset-md-2 form-group p_star">
+                                <input type="password" class="form-control" id="passwd" name="passwd"
+                                    placeholder="Contraseña">
+                            </div>
+                            <div class="col-md-12 offset-md-2 form-group">
+                                <div class="creat_account d-flex align-items-center">
+                                    <input type="checkbox" id="f-option" name="selector">
+                                    <label for="f-option">Recuérdame</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <button name="submit" type="submit" value="submit" class="btn_3">
+                                    INICIAR SESIÓN
+                                </button>
+                                <a class="lost_pass" href="#">¿Contraseña Olvidada?</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_form">
+                    <div class="login_part_form_iner">
+                        <h3>Bienvenido! <br>
+                            Area de registro</h3>
+                        <form class="row contact_form" action="/registro" method="post"
+                            autocomplete="off">
+                            <div class="col-md-12 form-group p_star">
+                                <input type="email" class="form-control" id="correo" name="correo" value=""
+                                    placeholder="example@gmail.com" required="required">
+                                <p><span id="validar"></span></p>
+                                <script>
+                                    document.getElementById('correo').addEventListener('input', function () {
+                                        campo = event.target;
+                                        valido = document.getElementById('validar');
+
+                                        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                                        //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+                                        if (emailRegex.test(campo.value)) {
+                                            valido.innerText = "Correo válido";
+                                        } else {
+                                            valido.innerText = "Correo no válido";
+                                        }
+                                    });
+                                </script>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="password" class="form-control" name="passwd" id="passwd"
+                                    placeholder="Contraseña">
+                            </div>
+                            <script>
+                                function mostrar() {
+                                    var x = $("#passwd").val();
+                                    var y = $("#passwd_repeat").val();
+                                    if (x != y) {
+                                        var res1 = "Las contraseñas no coinsiden";
+                                        document.getElementById('resultado').innerHTML = res1;
+                                    } else {
+                                        var res2 = "Las contraseñas son iguales";
+                                        document.getElementById('resultado').innerHTML = res2;
+                                    }
+                                }
+                            </script>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="password" class="form-control" name="passwd_repeat" onkeyup="mostrar()"
+                                    id="passwd_repeat" placeholder="Repetir contraseña">
+                                <p><span id="resultado"></span></p>
+                            </div>                            
+                            <div class="col-md-12 form-group">
+
+                                <button type="submit" value="submit" class="btn_3">
+                                    REGISTRAR
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{{>modals}}
+{{>suscribirse}}
+{{>footer}}

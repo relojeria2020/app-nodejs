@@ -1,0 +1,48 @@
+{{>header}}
+<section class="login_part padding_top">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_text text-center">
+                    <div class="login_part_text_iner">
+                        <h2>¿Nuevo en nuestra tienda?</h2>
+                        <p>Todos los días se hacen avances en ciencia y tecnología,
+                             y un buen ejemplo de esto es RelojSwatch</p>
+                        <a href="/registro" class="btn_3">CREA UNA CUENTA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_form">
+                    <div class="login_part_form_iner">
+                        <h3>Bienvenido de nuevo! <br>
+                        Inicia sesión ahora</h3>
+                        <form class="row contact_form" action="/auth" method="post" >
+                            <div class="col-md-12 form-group p_star">
+                                <input type="email" class="form-control" id="correo" name="correo" value=""
+                                    placeholder="example@gmail.com">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="password" class="form-control" id="passwd" name="passwd" value=""
+                                    placeholder="Contraseña">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="creat_account d-flex align-items-center">
+                                    <input type="checkbox" id="f-option" name="selector">
+                                    <label for="f-option">Recuérdame</label>
+                                </div>
+                                <button type="submit" name="submit"value="submit" class="btn_3">
+                                    INICIAR SESIÓN
+                                </button>
+                                <a class="lost_pass" href="#">¿Contraseña Olvidada?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>modals}}
+{{>suscribirse}}
+{{>footer}}

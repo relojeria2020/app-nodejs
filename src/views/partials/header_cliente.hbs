@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top fondo-navbar">
+    <a class="navbar-brand" > <label class="color-letra">Relojeria</label><label class="color-letra-logo">Swatch</label></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+     
+     <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a href="" class="nav-link">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Buscar..">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BUSCAR</button>
+                  </form>
+            </a>
+            </li>
+            <li class="nav-item py-2">
+                <a class="nav-link" href="/cliente/inicio">INICIO</a>
+            </li>
+            <li class="nav-item py-2">
+                <a class="nav-link" href="/cliente/datos/envio">DATOS DE ENVIO</a>
+            </li>
+             <li class="nav-item py-2">
+                <a class="nav-link" href="/cliente/pedidos">MIS PEDIDOS</a>
+            </li>
+            <li class="nav-item py-2">
+                <a class="nav-link" href="/cerrar">CERRAR SESIÓN</a>
+            </li>
+            <li class="nav-item py-2">
+                <a class="nav-link cart" href="/cliente/carrito"><i class="fas fa-cart-plus"></i> {{#if articulos}}[<label style="color: white;">{{articulos}}</label>]{{else}}[0]{{/if}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>

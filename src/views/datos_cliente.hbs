@@ -1,0 +1,282 @@
+{{>header_cliente}}
+<header>
+    <section class="textos-header">
+        {{#if datos_envio}}
+        <h1 style="color:#fff">Datos de envio.</h1>
+        <h2 style="color:#fff">Verifique su información personal.</h2>
+        {{else}}
+        <h1 style="color:#fff">Datos de envio!</h1>
+        <h2 style="color:#fff">Llene los datos de su direccion postal.</h2>
+        {{/if}}
+    </section>
+    <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+            style="height: 100%; width: 100%;">
+            <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                style="stroke: none; fill: #f8f9fa;"></path>
+        </svg></div>
+</header>
+
+{{#if datos_envio}}
+
+<section class="confirmation_part ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lx-4 offset-md-3">
+                <div class="single_confirmation_details">
+                    <h4 style=" color: #fff;">Dirección De Envío</h4>
+                    <ul>
+                        {{#each datos_envio}}
+
+                        <li>
+                            <p style=" color: #fff;">NOMBRE:</p><span style=" color: #fff;">: {{nombre}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">APELLIDO PATERNO:</p><span style=" color: #fff;">:
+                                {{paterno}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">APELLIDO MATERNO:</p><span style=" color: #fff;">:
+                                {{materno}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">COLONIA:</p><span style=" color: #fff;">: {{colonia}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">CALLE PRINCIPAL:</p><span style=" color: #fff;">:
+                                {{primera_calle}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">ENTRE QUE CALLE:</p><span style=" color: #fff;">:
+                                {{segunda_calle}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">NO. EXTERIOR:</p><span style=" color: #fff;">: {{numero}}</span>
+                        </li>
+                        <li>
+                            <p style=" color: #fff;">DESCRIPCIÓN DE LA CASA:</p><span style=" color: #fff;">:
+                                {{descripcion}}</span>
+                        </li>
+                   
+                    <a type="button" id="mostrar" class="btn btn-warning" data-toggle="modal"
+                        data-target=".bd-example-modal-xl" data-nombre="{{nombre}}" data-paterno="{{paterno}}"
+                        data-materno="{{materno}}" data-colonia="{{colonia}} " data-primera="{{primera_calle}}"
+                        data-segunda="{{segunda_calle}}" data-numero="{{numero}}" data-descripcion="{{descripcion}}"><i
+                            class="fas fa-edit"></i></a>
+                    <script>
+                        $(document).on('click', '#mostrar', function () {
+                          
+                            var nombre = $(this).data('nombre');
+                            var paterno = $(this).data('paterno');
+                            var materno = $(this).data('materno');
+                            var colonia = $(this).data('colonia');
+                            var primera_calle = $(this).data('primera');
+                            var segunda_calle = $(this).data('segunda');
+                            var numero = $(this).data('numero');
+                            var descripcion = $(this).data('descripcion');
+                       
+                            _nombre = document.getElementById('nombre').value = nombre;
+                            _paterno = document.getElementById('paterno').value = paterno;
+                            _materno = document.getElementById('materno').value = materno;
+                            _colonia = document.getElementById('colonia').value = colonia;
+                            _primera_calle = document.getElementById('primera').value = primera_calle;
+                            _segunda_calle = document.getElementById('segunda').value = segunda_calle;
+                            _numero = document.getElementById('numero').value = numero;
+                            _descripcion = document.getElementById('descripcion').value = descripcion;
+                        });
+
+                    </script>
+                  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 id="exampleModalLabel" class="offset-md-4">EDITAR MIS DATOS PERSONALES DE ENVIÓ</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="login_part_form">
+                                            <div class="login_part_form_iner">
+                                                <form action="/cliente/datos/actualizar" method="post" autocapitalize="off">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="nombre">Nombre:</label>
+                                                                <input type="text" class="form-control" id="nombre" name="nombre"
+                                                                    placeholder="Escribe tu nombre">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="paterno">Apellido paterno:</label>
+                                                                <input type="text" class="form-control" id="paterno" name="paterno"
+                                                                    placeholder="Escribe tu apellido paterno">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="materno">Apellido materno:</label>
+                                                                <input type="text" class="form-control" id="materno" name="materno"
+                                                                    placeholder="Escribe tu apellido materno">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="colonia">Colonia:</label>
+                                                                <input type="text" class="form-control" id="colonia" name="colonia"
+                                                                    placeholder="Escribe tu colonia">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="calle-principal">Calle principal:</label>
+                                                                <input type="text" class="form-control" id="primera"
+                                                                    name="primera_calle"
+                                                                    placeholder="Escribe la calle principal">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="segunda-calle">Entre que calle:</label>
+                                                                <input type="text" class="form-control" id="segunda"
+                                                                    name="segunda_calle"
+                                                                    placeholder="Escribe entre que calle de la principal">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="no-casa">No. Exterior:</label>
+                                                                <input type="text" class="form-control" id="numero" name="numero"
+                                                                    placeholder="No. Exterior">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="descripcion">Descripción o Referencias de la
+                                                                    casa:</label>
+                                                                <textarea class="form-control" id="descripcion" name="descripcion"
+                                                                    cols="30" rows="3"
+                                                                    placeholder="Descripción de la casa"></textarea>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-lg">Actualizar</button>
+                                                   </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 </ul>
+                    {{/each}}
+            </div>
+
+
+        </div>
+</section>
+
+
+
+{{else}}
+<div class="container-fluid">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-tittle text-center">
+                    <h3>Detalles de envió</h3>
+                </div>
+                <hr>
+                <form action="/cliente/datos/envio" method="post" autocapitalize="off">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Escribe tu nombre">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="paterno">Apellido paterno:</label>
+                                <input type="text" class="form-control" name="paterno"
+                                    placeholder="Escribe tu apellido paterno">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="materno">Apellido materno:</label>
+                                <input type="text" class="form-control" name="materno"
+                                    placeholder="Escribe tu apellido materno">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="colonia">Colonia:</label>
+                                <input type="text" class="form-control" name="colonia" placeholder="Escribe tu colonia">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="calle-principal">Calle principal:</label>
+                                <input type="text" class="form-control" name="primera_calle"
+                                    placeholder="Escribe la calle principal">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="segunda-calle">Entre que calle:</label>
+                                <input type="text" class="form-control" name="segunda_calle"
+                                    placeholder="Escribe entre que calle de la principal">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="no-casa">No. Exterior:</label>
+                                <input type="text" class="form-control" name="numero" placeholder="No. Exterior">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="descripcion">Descripción o Referencias de la casa:</label>
+                                <textarea class="form-control" name="descripcion" cols="30" rows="3"
+                                    placeholder="Descripción de la casa"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success btn-lg">Registrar</button>
+                    <button type="reset" class="btn btn-dark btn-lg">Cancelar</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{/if}}
+
+<br><br>
+{{>footer}}

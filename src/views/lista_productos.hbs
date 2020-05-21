@@ -1,0 +1,117 @@
+{{>header_admin}}
+<div class="container-fluid py-4">
+    <div class="row">
+        <h1>Lista de productos</h1><br>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">DESCRIPCION</th>
+                        <th scope="col">PRECIO</th>
+                        <th scope="col">IMAGEN</th>
+                        <th scope="col">STOCK</th>
+                        <th scope="col">ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each productos}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{nombre}}</td>
+                        <td>{{descripcion}}</td>
+                        <td>${{precio}}.00</td>
+                        <td><img src="../{{imagen}}" alt="producto" width="50" height="50"></td>
+                        <td>{{stock_inicial}}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="/administrador/inicio" class="btn btn-primary"><i
+                                        class="fas fa-plus-circle"></i></a>
+                                <a type="button" id="mostrar" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-id="{{id}}" data-nombre="{{nombre}}"
+                                data-descripcion="{{descripcion}}" data-precio="{{precio}}" data-stock="{{stock_inicial}}"><i
+                                        class="fas fa-edit"></i></a>
+                                          <script>
+                $(document).on('click','#mostrar',function(){
+                  var id= $(this).data('id');
+                  var nombre= $(this).data('nombre');
+                  var descripcion= $(this).data('descripcion');
+                  var precio=$(this).data('precio');
+                  var stock_inicial=$(this).data('stock');
+                  _id=document.getElementById('id').value=id;
+                  _nombre = document.getElementById('nombre').value=nombre;                 
+                  _descripcion= document.getElementById('descripcion').value=descripcion;
+                  _precio=document.getElementById('precio').value=precio;
+                  _stock=document.getElementById('stock_inicial').value= stock_inicial;
+                });
+                
+               </script>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 id="exampleModalLabel" class="offset-md-4">Editar producto</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-md-12 offset-md-2">
+                                                    <div class="login_part_form">
+                                                        <div class="login_part_form_iner">
+                                                            <form method="POST" action="/actualizar/producto"
+                                                                enctype="multipart/form-data">
+                                                                <input type="hidden" id="id" name="id">
+                                                                <div class="form-group">
+                                                                    <label for="nombre">Nombre</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="nombre"
+                                                                        placeholder="Escribe el nombre del producto" id="nombre">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="descripcion">Descripcion</label>
+                                                                    <textarea class="form-control" name="descripcion"
+                                                                        placeholder="Escribe una descripcion del producto"
+                                                                        cols="5" rows="4" id="descripcion"></textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="precio">Precio</label>
+                                                                    <input type="text" name="precio"
+                                                                        placeholder="Escriba su precio"
+                                                                        class="form-control" id="precio">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="imagen">Imagen</label>
+                                                                    <input type="file" name="imagen"
+                                                                        class="form-control-file">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="precio">Stock</label>
+                                                                    <input type="text" name="stock_inicial"
+                                                                        placeholder="Escriba el stock inicial"
+                                                                        class="form-control" id="stock_inicial">
+                                                                </div>
+
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Registrar</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/producto/eliminar/{{id}}" class="btn btn-danger"><i
+                                        class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

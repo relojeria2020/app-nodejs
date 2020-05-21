@@ -1,0 +1,158 @@
+{{>header_cliente}}
+<header>
+  <section class="textos-header">
+    <h1 style="color:#fff">Bienvenido!</h1>
+    <h2 style="color:#fff">Detalles de los producto en su carrito.</h2>
+  </section>
+  <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+      style="height: 100%; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+        style="stroke: none; fill: #f8f9fa;"></path>
+    </svg></div>
+</header>
+<section class="cart_area padding_top">
+  <div class="container">
+    <div class="cart_inner">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Total</th>
+              <th scope="col">Acción</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {{#each carrito}}
+            <tr>
+             <td>
+
+             </td>
+             <td></td>
+
+              <td>
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="{{imagen}}" alt="imagen" width="80" height="80" />
+                  </div>
+                  <div class="media-body">
+                    <p>{{nombre}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <h5>${{precio}}.00</h5>
+              </td>
+              <td>
+                <div class="product_count">
+
+                  <p>{{cantidad}}</p>
+                </div>
+              </td>
+
+
+
+              <td>
+                <script>
+                  document.write("$" + {{ precio }} * {{ cantidad }}+".00");
+                </script>
+              </td>
+
+              <td>
+                <a href="/carrito/eliminar/{{id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+              </td>
+
+
+
+
+            </tr>
+            {{/each}}
+
+            <tr class="shipping_area">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <h5>Costo De Envio</h5>
+              </td>
+              <td>
+                                     
+                        
+                           <h5>Entrega local: $150.00</h5>
+                    
+              </td> 
+            </tr> 
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <h5>Subtotal</h5>
+              </td>
+              <td>
+                
+                <h5>${{total}}.00 </h5>
+                 
+              </td>
+              
+            </tr>
+            <tr>
+                <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             <td>Total a pagar</td>
+              <td>
+                {{#if total}}
+                <script>
+                  document.write("$"+({{total}}+(150))+".00");
+                </script>
+                {{else}}
+                <h5>$0.00</h5>
+                {{/if}}
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+         <form action="/cliente/pago/productos" method="post">
+         <input type="hidden" name="pago" value="{{pago}}">
+         <input type="hidden" name="nombre" value="{{arti}}">
+         <input type="hidden" name="descripcion" value="{{des}}">
+        <div class="checkout_btn_inner float-right">
+          <a class="btn_1 carrito" href="/cliente/inicio">Continuar comprando</a>
+          
+         
+           <script 
+               src="https://checkout.stripe.com/checkout.js"
+               class="stripe-button"
+               data-key="pk_test_UYjDryivGG53tGHxcvgmstzw00GWRvfzwc"
+               data-currency="MXN"
+               data-amount="{{pago}}00"
+               data-name="{{arti}}"               
+               data-description="{{des}}"
+               data-image="../logo/stripe.png"
+               data-label= "COMPRAR"
+               data-locale="auto"> 
+               </script>
+      
+          {{!-- <a class="btn_1 checkout_btn_1 carrito" >Proceder al pago</a> --}}
+        
+        </div>
+         </form>
+      </div>
+    </div>
+</section>
+<br><br>
+{{>footer}}

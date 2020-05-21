@@ -1,0 +1,23 @@
+{{>header_cliente}}
+
+<div class="container-fluid py-4">
+    <h2>PRODUCTOS</h2>
+    <div class="col-md-12">
+        <div class="row">
+            {{#each productos}}
+            <div class="py-3">
+                <div class="card mr-sm-4" style="width: 16rem;">
+                    <img class="img-fluid" src="../{{imagen}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{nombre}}</h5>
+                        <h6>${{precio}}.00</h6>
+                        <a href="/detalles/producto/{{id}}" class="btn btn-primary carrito" ><i
+                                class="fas fa-cart-plus"></i></a>                      
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{>footer}}

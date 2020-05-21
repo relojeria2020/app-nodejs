@@ -1,0 +1,38 @@
+{{>header_admin}}
+
+<section class="col-md-8 offset-2 py-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-tittle">
+                Registro de productos
+            </div>
+            <hr>
+            <form method="POST" action="/registro/producto" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" placeholder="Escribe el nombre del producto">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripcion</label>
+                    <textarea class="form-control" name="descripcion" placeholder="Escribe una descripcion del producto"
+                        cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="text" name="precio" placeholder="Escriba su precio" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" name="imagen" class="form-control-file" >
+                </div>
+                <div class="form-group">
+                    <label for="precio">Stock</label>
+                    <input type="text" name="stock_inicial" placeholder="Escriba el stock inicial" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form>
+        </div>
+    </div>
+</section>
+{{>footer}}
